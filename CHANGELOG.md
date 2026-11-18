@@ -9,6 +9,24 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.8
+
+- **Quick panel pass.** A `QUICK PANEL · 1 MIN` strip on the focus screen releases the pin for a
+  minute so the quick panel comes down. Focus freezes, the minute counts as unlocked time, the
+  strip counts down, and the screen pins itself again when it is up.
+- **Allowed apps are chosen by you.** Three slots with a picker (`Allowed apps` on the start
+  screen), shown with their own icons on the focus screen. Spotify, WhatsApp and Phone stay the
+  defaults until you change them; hold a slot to clear it.
+- **Daily reminder**, off by default: pick a time and it posts a nudge with START and NOT TODAY.
+  It only asks, it never starts a session by itself.
+- **Weekly review** (tap the week card): week total, session count and average, days on target,
+  the hour you focus most, doomscroll earned vs. used, and every day's total.
+- **Streak freezes**: two a week, unused ones carry over. A single missed day spends one and the
+  streak survives.
+- **LOCK IN button on the widget**, hidden while a session is running.
+- Hitting the session goal gives a short double buzz and the goal line flashes.
+- The setup list folds away as soon as do-not-disturb and display-over-apps are on.
+
 ## 1.7
 
 - Start screen opens on a **recap of the last session** (length, when it ran, share of it locked)
