@@ -9,6 +9,13 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.4
+
+- Calendar lists every session logged that day, with **add** (typed start and end, overnight
+  allowed) and **delete** with a confirmation.
+- Doomscroll time resets to 10 minutes every session, undoing the 1.2 experiment.
+- Database version 2: a `segments` table, added without touching existing sessions.
+
 ## 1.3
 
 - **End-of-session summary**: time locked in, time unlocked (break + pause), what share of the
