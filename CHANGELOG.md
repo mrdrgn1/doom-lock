@@ -9,6 +9,13 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.5
+
+- Notification buttons: **BACK TO LOCK IN**, **RESUME**, **END**, handled without opening the app.
+- **Quick Settings tile** that starts a session from the shade.
+- Calendar day view draws each session as a red/grey timeline.
+- Dot-matrix **LOCK IN** headline on the start screen.
+
 ## 1.4
 
 - Calendar lists every session logged that day, with **add** (typed start and end, overnight
