@@ -9,6 +9,13 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.3
+
+- **End-of-session summary**: time locked in, time unlocked (break + pause), what share of the
+  session was locked, and a timeline bar showing when each happened.
+- **Home screen widget** with today's focus total and session count.
+- Sessions started saving their timeline, so the summary can draw it.
+
 ## 1.2
 
 - Doomscroll time carried over between sessions. Reverted in 1.4: a session starts at 10 minutes
