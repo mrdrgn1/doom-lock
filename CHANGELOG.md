@@ -9,6 +9,11 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.2
+
+- Doomscroll time carried over between sessions. Reverted in 1.4: a session starts at 10 minutes
+  again, earning 1 minute per 6 minutes of focus, uncapped.
+
 ## 1.1
 
 - **Session length chips** (30M / 1H / 1.5H / 2H / 3H / OPEN) and a hollow dot rectangle that
