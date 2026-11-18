@@ -9,6 +9,16 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.6
+
+- **Daily target** with a 24-dot progress row; tap the line to cycle 1h / 2h / 3h / 4h / 6h / off.
+- **Seven-bar week chart**, Monday first, today in red.
+- **UNDO** bar for six seconds after deleting, adding or editing a log.
+- **Edit a logged session**; its focus time becomes end minus start.
+- The widget switches to the live session state — LOCKED IN, ON A BREAK, PAUSED, IN AN APP — with
+  the doomscroll balance instead of today's total.
+- Hold buttons tap, tick after a second and confirm with haptics.
+
 ## 1.5
 
 - Notification buttons: **BACK TO LOCK IN**, **RESUME**, **END**, handled without opening the app.
