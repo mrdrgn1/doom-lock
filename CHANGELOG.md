@@ -9,6 +9,13 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.7
+
+- Start screen opens on a **recap of the last session** (length, when it ran, share of it locked)
+  instead of today's running total. Today's progress moved into the daily target line.
+- The big dot-matrix **LOCK IN** headline came off the start screen.
+- The setup list folds into one line with a small SHOW / HIDE button, and remembers your choice.
+
 ## 1.6
 
 - **Daily target** with a 24-dot progress row; tap the line to cycle 1h / 2h / 3h / 4h / 6h / off.
