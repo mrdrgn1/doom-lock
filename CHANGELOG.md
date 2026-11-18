@@ -9,6 +9,13 @@ for those builds was never kept anywhere but inside the APKs. From 1.9 on, each 
 normal commit plus a tag.
 
 
+## 1.1
+
+- **Session length chips** (30M / 1H / 1.5H / 2H / 3H / OPEN) and a hollow dot rectangle that
+  fills in as the session works towards its goal.
+- **Now playing** line on the focus screen, with a next-track button.
+- **This week** and **streak** lines on the start screen.
+
 ## 1.0
 
 - First build: start screen, pinned focus screen with dimming and burn-in shift, doomscroll
