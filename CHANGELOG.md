@@ -8,6 +8,19 @@ shipped. Builds 1.0–1.8 are recorded as commits carrying their shipped APKs, b
 for those builds was never kept anywhere but inside the APKs. From 1.9 on, each build is a
 normal commit plus a tag.
 
+## 1.9
+
+- Renamed to **Doom Lock**. The app id is unchanged, so it installs over Lock In and keeps every
+  session, note and setting.
+- **Doomscroll breaks no longer waste the minute you were part-way through earning.** A
+  4-minute stretch before a break used to throw that progress away; it now carries into the
+  stretch after the break.
+- **A break can never cost more than the balance it started with.** If the countdown is killed
+  by the phone, walking back to it later no longer drains more than the break was worth.
+- The widget shows the break's remaining time instead of the full balance, and knows about the
+  app window and quick panel states.
+- The daily reminder now uses an exact alarm where Android allows it, falls back to a
+  two-minute window where it does not, and re-arms every time the app is opened.
 
 ## 1.8
 

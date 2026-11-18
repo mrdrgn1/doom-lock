@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Doom Lock</string>
+    <string name="title">DOOM LOCK</string>
+    <string name="tagline">Phone down. Timer on.</string>
+    <string name="today">TODAY</string>
+    <string name="last_session">LAST SESSION</string>
+    <string name="start">LOCK IN</string>
+    <string name="calendar">CALENDAR</string>
+    <string name="setup">SETUP</string>
+    <string name="dnd_title">Do Not Disturb access</string>
+    <string name="overlay_title">Display over other apps</string>
+    <string name="pinning_title">Screen pinning + PIN</string>
+    <string name="pinning_help">Settings › Security and privacy › Other security settings › Pin windows.\nTurn it on and choose “Ask for PIN before unpinning”. The focus screen pins itself, and the PIN is your emergency way out.</string>
+    <string name="doomscroll">DOOMSCROLL</string>
+    <string name="hold_to_pause">HOLD TO PAUSE</string>
+    <string name="hold_to_end">HOLD TO END</string>
+    <string name="paused">PAUSED</string>
+    <string name="resume">RESUME LOCK-IN</string>
+    <string name="note">NOTE</string>
+    <string name="note_hint">What did you get done? What got in the way?</string>
+    <string name="back">‹</string>
+    <string name="save_hint">Saved as you type</string>
+</resources>
