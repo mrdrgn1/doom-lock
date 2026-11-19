@@ -10,7 +10,7 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 
 /**
- * Pull down the shade, tap "Doom Lock": the session starts (DND on, session saved) and the focus
+ * Pull down the shade, tap "Lock In": the session starts (DND on, session saved) and the focus
  * screen opens. Tapping again while a session is running just reopens whichever screen fits.
  */
 class LockInTileService : TileService() {
@@ -36,7 +36,7 @@ class LockInTileService : TileService() {
         SessionStore.load(this)
         val tile = qsTile ?: return
         tile.state = if (SessionStore.isActive) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.label = "Doom Lock"
+        tile.label = "Lock In"
         tile.icon = Icon.createWithResource(this, R.drawable.ic_tile)
         tile.updateTile()
     }

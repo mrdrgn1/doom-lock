@@ -1,7 +1,8 @@
 # Doom Lock
 
-Called *Lock In* before 1.9; the app id is still `com.lockin`, so builds install over the old
-name and keep history.
+The project is called Doom Lock. On the phone the app shows up as **Lock In** — that is the name
+it had from 1.0 to 1.8, and 1.9's rename is undone in 1.10. The app id is still `com.lockin`, so
+any build installs over any other and keeps history.
 
 A focus app for library and uni sessions: it pins itself to the screen, silences the phone,
 dims to an AOD-style black timer, and blocks the rest of the phone until you end the session.
@@ -10,7 +11,8 @@ Kotlin, Gradle Kotlin DSL, plain Android views, no third-party libraries, `minSd
 `targetSdk 35`.
 
 Every build and what it added is in [CHANGELOG.md](CHANGELOG.md); the installable APKs are kept
-in `dist/`. Builds before 1.9 were called *Lock In* and their APKs carry that name.
+in `dist/`. Every APK is labelled *Lock In* on the phone except 1.9's, which carried the
+Doom Lock name.
 
 ## Build
 

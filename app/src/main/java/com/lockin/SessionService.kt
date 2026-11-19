@@ -133,7 +133,7 @@ class SessionService : Service() {
         MODE_APPS -> "Allowed app window"
         MODE_PAUSED -> "Paused"
         MODE_PANEL -> "Quick panel"
-        else -> "Doom Lock"
+        else -> "Lock In"
     }
 
     private fun textOrIdle(): String {

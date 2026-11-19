@@ -1,12 +1,20 @@
 # Changelog
 
-Every build of Lock In, newest first. Newer builds install straight over older ones and keep
+Every build of the app on your phone (Lock In), newest first. Newer builds install straight over older ones and keep
 your sessions, notes and settings.
 
 This trail was rebuilt from the APKs kept in `dist/`, so it lists what each build actually
 shipped. Builds 1.0–1.8 are recorded as commits carrying their shipped APKs, because the source
 for those builds was never kept anywhere but inside the APKs. From 1.9 on, each build is a
 normal commit plus a tag.
+
+## 1.10
+
+- **The app is called Lock In on the phone again.** The 1.9 rename is undone everywhere the
+  phone shows a name: the launcher, the ongoing notification, the quick settings tile and the
+  notification-access entry all say Lock In. The app id is untouched, so this installs over 1.9
+  (or any older build) as a normal update and keeps every session, note, streak and setting.
+- Nothing else in the app changed. The project and the repository are still called Doom Lock.
 
 ## 1.9
 

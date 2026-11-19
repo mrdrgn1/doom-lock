@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Doom Lock</string>
-    <string name="title">DOOM LOCK</string>
+    <string name="app_name">Lock In</string>
+    <string name="title">LOCK IN</string>
     <string name="tagline">Phone down. Timer on.</string>
     <string name="today">TODAY</string>
     <string name="last_session">LAST SESSION</string>

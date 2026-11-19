@@ -362,7 +362,7 @@ class MainActivity : Activity() {
 
         val overlay = Settings.canDrawOverlays(this)
         overlayState.text = if (overlay) {
-            "Allowed · break brings Doom Lock back"
+            "Allowed · break brings Lock In back"
         } else {
             "Not allowed · break returns via notification"
         }
@@ -435,7 +435,7 @@ class MainActivity : Activity() {
         if (!Dnd.hasAccess(this)) {
             Toast.makeText(
                 this,
-                "Give Doom Lock Do Not Disturb access first, otherwise the phone keeps buzzing.",
+                "Give Lock In Do Not Disturb access first, otherwise the phone keeps buzzing.",
                 Toast.LENGTH_LONG
             ).show()
         }

@@ -100,7 +100,7 @@
             android:name=".LockInTileService"
             android:exported="true"
             android:icon="@drawable/ic_tile"
-            android:label="Doom Lock"
+            android:label="Lock In"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
@@ -110,7 +110,7 @@
         <service
             android:name=".MediaWatcher"
             android:exported="true"
-            android:label="Doom Lock now playing"
+            android:label="Lock In now playing"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
