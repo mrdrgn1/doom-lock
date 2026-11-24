@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lock In — interface rebuild (1.11)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #000000;
+    --plate: #070707;
+    --rule: #1F1F1E;
+    --rule-strong: #3A3A37;
+    --chalk: #F2F1ED;
+    --dim: #8A8A84;
+    --whisper: #55554F;
+    --red: #D71921;
+    --red-deep: #7A1015;
+  }
+  body {
+    background: var(--ink);
+    color: var(--chalk);
+    font-family: Roboto, "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 28px 64px;
+  }
+  .mono { font-family: ui-monospace, "Roboto Mono", "SF Mono", Menlo, monospace; }
+  header { max-width: 1660px; margin: 0 auto 34px; }
+  .mark { display: flex; align-items: center; gap: 10px; }
+  .mark i { width: 6px; height: 6px; background: var(--red); display: block; }
+  .mark span { font-size: 12px; font-weight: 500; letter-spacing: .3em; }
+  header h1 { font-size: 15px; font-weight: 400; color: var(--dim); margin-top: 18px; line-height: 1.6; }
+  header h1 b { color: var(--chalk); font-weight: 500; }
+  .tokens { display: flex; gap: 22px; margin-top: 16px; flex-wrap: wrap; }
+  .tokens div { display: flex; align-items: center; gap: 8px; font-size: 10px; color: var(--whisper); letter-spacing: .1em; text-transform: none; }
+  .tokens i { width: 12px; height: 12px; display: block; border: 1px solid var(--rule); }
+  main { display: flex; gap: 26px; align-items: flex-start; justify-content: center; flex-wrap: wrap; max-width: 1660px; margin: 0 auto; }
+  figure { width: 360px; }
+  figcaption { font-family: ui-monospace, Menlo, monospace; font-size: 9px; letter-spacing: .18em; color: var(--whisper); padding: 12px 2px 0; display: flex; justify-content: space-between; }
+  .phone { width: 360px; border: 1px solid var(--rule); background: var(--ink); }
+  .screen { padding: 26px 22px 22px; min-height: 726px; display: flex; flex-direction: column; }
+  .rowline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .rule { height: 1px; background: var(--rule); }
+  .kicker { font-family: ui-monospace, Menlo, monospace; font-size: 9px; letter-spacing: .18em; color: var(--whisper); text-transform: uppercase; }
+  .note { font-size: 11px; color: var(--dim); line-height: 1.55; }
+  .num { font-family: ui-monospace, Menlo, monospace; font-size: 10px; color: var(--dim); }
+  canvas { display: block; width: 100%; }
+  .chips { display: flex; gap: 6px; margin-top: 12px; }
+  .chip { flex: 1; height: 44px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center;
+          font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--dim); }
+  .chip.on { border-color: var(--red); background: rgba(215,25,33,.10); color: var(--red); }
+  .bigbtn { height: 66px; background: var(--red); color: #F7F6F2; display: flex; align-items: center; justify-content: center;
+            font-size: 15px; font-weight: 500; letter-spacing: .2em; }
+  .ghostbtn { height: 56px; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center;
+              font-size: 12px; font-weight: 500; letter-spacing: .16em; color: var(--chalk); }
+  .row { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 12px; }
+  .row .t { font-size: 14px; }
+  .row .d { font-size: 11px; color: var(--dim); margin-top: 4px; line-height: 1.45; }
+  .row .a { font-family: ui-monospace, Menlo, monospace; font-size: 9px; letter-spacing: .12em; color: var(--red); }
+  .bars { display: flex; align-items: flex-end; gap: 12px; height: 52px; margin-top: 18px; }
+  .bars div { flex: 1; background: var(--rule-strong); }
+  .bars div.today { background: var(--red); }
+  .days { margin-top: 16px; }
+  .days div { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--rule); }
+  .days div:first-child { border-top: 1px solid var(--rule); }
+  .days .day { font-family: ui-monospace, Menlo, monospace; font-size: 10px; letter-spacing: .1em; color: var(--dim); }
+  .days .val { font-family: ui-monospace, Menlo, monospace; font-size: 10px; color: var(--chalk); }
+  .apps { display: flex; margin-top: 18px; }
+  .app { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .app i { width: 26px; height: 26px; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center;
+           font-family: ui-monospace, Menlo, monospace; font-size: 8px; color: var(--dim); font-style: normal; }
+  .app span { font-size: 10px; color: var(--whisper); }
+  .doom { border: 1px solid var(--red); background: rgba(215,25,33,.05); color: var(--red); height: 54px;
+          display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; letter-spacing: .14em; }
+  .panel { height: 44px; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center;
+           font-family: ui-monospace, Menlo, monospace; font-size: 9px; letter-spacing: .12em; color: var(--dim); }
+  .holds { display: flex; gap: 10px; margin-top: 10px; }
+  .hold { flex: 1; height: 56px; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center;
+          font-size: 10px; font-weight: 500; letter-spacing: .12em; color: var(--chalk); }
+  .hold.solo { flex: none; }
+  .hold.red { color: var(--red); }
+  .spacer { flex: 1; }
+  .tiles4 { display: flex; gap: 1px; background: var(--rule); margin-top: 0; }
+  footer { max-width: 1660px; margin: 40px auto 0; font-size: 11px; color: var(--whisper); line-height: 1.7; }
+</style>
+</head>
+<body>
+<header>
+  <div class="mark"><i></i><span>LOCK IN</span></div>
+  <h1><b>Interface rebuild, 1.11.</b> Rules instead of rounded cards, one dot-matrix instrument per screen,
+      red spent on a single thing. Same screens, same features.</h1>
+  <div class="tokens">
+    <div><i style="background:#000000"></i>ink #000000</div>
+    <div><i style="background:#1F1F1E"></i>rules #1F1F1E</div>
+    <div><i style="background:#F2F1ED"></i>chalk #F2F1ED</div>
+    <div><i style="background:#8A8A84"></i>dim #8A8A84</div>
+    <div><i style="background:#D71921"></i>red #D71921</div>
+  </div>
+</header>
+
+<main>
+  <!-- START -->
+  <figure>
+    <div class="phone"><div class="screen">
+      <div class="mark"><i></i><span>LOCK IN</span></div>
+
+      <div class="kicker" style="margin-top:36px">Last session</div>
+      <canvas id="c-recap" style="margin-top:12px"></canvas>
+      <div class="note" style="margin-top:12px">Today 19:04–21:12 · 92% locked · 12m doomscroll</div>
+
+      <div class="rule" style="margin-top:26px"></div>
+
+      <div class="rowline" style="margin-top:22px">
+        <span class="kicker">Today</span>
+        <span class="num">2H 10M TO GO</span>
+      </div>
+      <canvas id="c-daily" style="margin-top:14px"></canvas>
+
+      <div class="mono" style="font-size:11px;margin-top:24px">THIS WEEK  6H 40M  ·  4 DAYS</div>
+      <div class="mono" style="font-size:10px;color:var(--whisper);margin-top:6px">12 DAYS IN A ROW  ·  BEST 3H 10M  ·  2 FREEZES</div>
+
+      <div class="bars" id="weekbars"></div>
+
+      <div class="rule" style="margin-top:30px"></div>
+
+      <div class="kicker" style="margin-top:22px">Session length</div>
+      <div class="chips">
+        <div class="chip">30m</div><div class="chip">1h</div><div class="chip">1.5h</div>
+        <div class="chip on">2h</div><div class="chip">3h</div><div class="chip">Open</div>
+      </div>
+
+      <div class="bigbtn" style="margin-top:20px">LOCK IN</div>
+      <div class="ghostbtn" style="margin-top:10px">CALENDAR</div>
+
+      <div class="rule" style="margin-top:30px"></div>
+      <div class="row">
+        <div><div class="t">Allowed apps</div><div class="d">Spotify · WhatsApp · Phone</div></div>
+        <div class="a">CHANGE</div>
+      </div>
+      <div class="rule"></div>
+      <div class="row">
+        <div><div class="t">Daily reminder</div><div class="d">Asks at 20:00 · it never starts one for you</div></div>
+        <div class="a">ON</div>
+      </div>
+      <div class="rule"></div>
+
+      <div class="rowline" style="margin-top:28px">
+        <span class="kicker">Setup</span>
+        <span class="mono" style="font-size:9px;letter-spacing:.12em;color:var(--dim)">HIDE</span>
+      </div>
+    </div></div>
+    <figcaption><span>01 · START</span><span>360dp</span></figcaption>
+  </figure>
+
+  <!-- FOCUS -->
+  <figure>
+    <div class="phone"><div class="screen">
+      <div class="rowline">
+        <span class="mono" style="font-size:9px;color:var(--whisper)">Do not disturb on, since 19:04</span>
+        <span class="mono" style="font-size:9px">TODAY 1H 24M</span>
+      </div>
+      <div class="rule" style="margin-top:14px"></div>
+
+      <div class="spacer"></div>
+
+      <canvas id="c-focus"></canvas>
+      <canvas id="c-goal" style="margin-top:28px"></canvas>
+      <div class="mono" style="font-size:9px;color:var(--whisper);margin-top:12px">GOAL 2H  ·  48M TO GO</div>
+
+      <div class="spacer"></div>
+
+      <div class="rule"></div>
+      <div class="rowline" style="padding:14px 0">
+        <div>
+          <div style="font-size:13px">Nocturne, Op. 9 No. 2</div>
+          <div style="font-size:10px;color:var(--whisper);margin-top:3px">Chopin · 4:12</div>
+        </div>
+        <div class="mono" style="font-size:14px;color:var(--dim)">››</div>
+      </div>
+
+      <div class="doom" style="margin-top:6px">DOOMSCROLL  ·  12m</div>
+      <div class="note" style="font-size:10px;color:var(--whisper);margin-top:9px">10 minutes to start, then 1 minute every 6</div>
+
+      <div class="apps">
+        <div class="app"><i>SP</i><span>Spotify</span></div>
+        <div class="app"><i>WA</i><span>WhatsApp</span></div>
+        <div class="app"><i>PH</i><span>Phone</span></div>
+      </div>
+
+      <div class="panel" style="margin-top:18px">QUICK PANEL  ·  1 MIN</div>
+      <div class="holds">
+        <div class="hold">HOLD TO PAUSE</div>
+        <div class="hold red">HOLD TO END</div>
+      </div>
+    </div></div>
+    <figcaption><span>02 · LOCKED IN</span><span>360dp</span></figcaption>
+  </figure>
+
+  <!-- PAUSE -->
+  <figure>
+    <div class="phone"><div class="screen">
+      <div class="mark"><i></i><span style="color:var(--red);font-size:11px">PAUSED</span></div>
+      <div class="rule" style="margin-top:16px"></div>
+
+      <div class="spacer"></div>
+
+      <canvas id="c-pause"></canvas>
+      <div class="note" style="margin-top:20px">Paused at 21:06</div>
+      <div class="mono" style="font-size:9px;letter-spacing:.08em;color:var(--whisper);margin-top:8px">FOCUS FROZEN  ·  4M UNLOCKED</div>
+
+      <div class="spacer"></div>
+
+      <div class="bigbtn" style="height:62px;font-size:14px;letter-spacing:.18em">RESUME LOCK-IN</div>
+      <div class="hold solo" style="margin-top:10px;height:56px">HOLD TO END</div>
+    </div></div>
+    <figcaption><span>03 · PAUSED</span><span>360dp</span></figcaption>
+  </figure>
+
+  <!-- WEEK -->
+  <figure>
+    <div class="phone"><div class="screen">
+      <div class="rowline">
+        <span style="font-size:20px;color:var(--dim);line-height:1">‹</span>
+        <span class="kicker" style="flex:1;text-align:left;margin-left:20px">This week</span>
+      </div>
+
+      <div class="note" style="margin-top:12px">Mon 17 – Sun 23 Nov</div>
+      <canvas id="c-week" style="margin-top:18px"></canvas>
+      <div class="note" style="margin-top:16px">7 sessions · 1h 23m average · 5 days on target</div>
+
+      <div class="bars" id="weekbars2" style="height:72px;margin-top:26px"></div>
+
+      <div class="days" id="weekdays"></div>
+
+      <div class="rule" style="margin-top:26px"></div>
+      <div class="note" style="margin-top:20px">Daily target met 5 of 7 days</div>
+      <div class="note" style="margin-top:12px">Doomscroll earned 18m · used 12m</div>
+      <div class="note" style="margin-top:12px;color:var(--red)">Best hour 20:00–21:00</div>
+      <div class="note" style="margin-top:12px;color:var(--whisper)">2 freezes left this week</div>
+    </div></div>
+    <figcaption><span>04 · WEEK</span><span>360dp</span></figcaption>
+  </figure>
+</main>
+
+<footer>
+  Preview of the 1.11 layouts. The clocks and dot strips here are drawn with the same 5×7 dot grid the
+  app uses, so sizes and spacing match the real screens; the app itself sets all of this natively.
+</footer>
+
+<script>
+  const G = {
+    '0': ['01110','10001','10011','10101','11001','10001','01110'],
+    '1': ['00100','01100','00100','00100','00100','00100','01110'],
+    '2': ['01110','10001','00001','00010','00100','01000','11111'],
+    '3': ['11111','00010','00100','00010','00001','10001','01110'],
+    '4': ['00010','00110','01010','10010','11111','00010','00010'],
+    '5': ['11111','10000','11110','00001','00001','10001','01110'],
+    '6': ['00110','01000','10000','11110','10001','10001','01110'],
+    '7': ['11111','00001','00010','00100','01000','01000','01000'],
+    '8': ['01110','10001','10001','01110','10001','10001','01110'],
+    '9': ['01110','10001','10001','01111','00001','00010','01100'],
+    ':': ['00000','00100','00100','00000','00100','00100','00000'],
+    ' ': ['00000','00000','00000','00000','00000','00000','00000']
+  };
+  const RED = '#D71921';
+  const OFF = 'rgba(215,25,33,0.11)';
+
+  function clock(canvas, text, opts = {}) {
+    if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.parentElement.clientWidth;
+    const chars = text.length;
+    const cell = w / (chars * 6 - 1);
+    const h = cell * 7;
+    canvas.style.height = h + 'px';
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const r = cell * 0.37;
+    const on = opts.color || RED;
+    const off = opts.off || OFF;
+    for (let c = 0; c < chars; c++) {
+      const glyph = G[text[c]] || G[' '];
+      for (let y = 0; y < 7; y++) {
+        for (let x = 0; x < 5; x++) {
+          ctx.beginPath();
+          ctx.fillStyle = glyph[y][x] === '1' ? on : off;
+          ctx.arc(c * 6 * cell + x * cell + cell / 2, y * cell + cell / 2, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+  }
+
+  function strip(canvas, progress) {
+    if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    const cols = 24, rows = 2;
+    const w = canvas.parentElement.clientWidth;
+    const cell = w / cols;
+    const h = cell * rows;
+    canvas.style.height = h + 'px';
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const r = cell * 0.3;
+    const lit = Math.round(progress * cols);
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        ctx.beginPath();
+        ctx.fillStyle = x < lit ? RED : OFF;
+        ctx.arc(x * cell + cell / 2, y * cell + cell / 2, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function bars(id, values, today) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const max = Math.max(...values, 1);
+    el.innerHTML = '';
+    values.forEach((v, i) => {
+      const d = document.createElement('div');
+      d.style.height = Math.max(2, Math.round((v / max) * 100)) + '%';
+      if (i === today) d.className = 'today';
+      el.appendChild(d);
+    });
+  }
+
+  const weekValues = [130, 215, 95, 160, 190, 0, 60];
+  bars('weekbars', weekValues, 3);
+  bars('weekbars2', weekValues, 3);
+
+  const days = [['MON','2h 10m'],['TUE','3h 35m'],['WED','1h 35m'],['THU','2h 40m'],['FRI','3h 10m'],['SAT','—'],['SUN','1h 00m']];
+  document.getElementById('weekdays').innerHTML =
+    days.map(d => `<div><span class="day">${d[0]}</span><span class="val">${d[1]}</span></div>`).join('');
+
+  function drawAll() {
+    clock(document.getElementById('c-recap'), '01:42:15');
+    strip(document.getElementById('c-daily'), 0.62);
+    clock(document.getElementById('c-focus'), '01:12:36');
+    strip(document.getElementById('c-goal'), 0.60);
+    clock(document.getElementById('c-pause'), '01:08:04');
+    clock(document.getElementById('c-week'), '9:40:00');
+  }
+  drawAll();
+  window.addEventListener('resize', drawAll);
+</script>
+</body>
+</html>

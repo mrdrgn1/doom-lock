@@ -112,6 +112,8 @@ class LockActivity : Activity() {
         timer.offDotColor = 0x14D71921
 
         goalGrid = findViewById(R.id.goalGrid)
+        goalGrid.columns = 24
+        goalGrid.rows = 2
         goalGrid.litColor = getColor(R.color.accent)
         goalGrid.frameColor = 0x40D71921
         goalGrid.offColor = 0x0AD71921
@@ -380,8 +382,8 @@ class LockActivity : Activity() {
             val name = TextView(this).apply {
                 text = AllowedApps.label(this@LockActivity, packageName)
                 setTextColor(getColor(R.color.faint))
-                textSize = 9f
-                letterSpacing = 0.08f
+                textSize = 10f
+                letterSpacing = 0.02f
                 gravity = Gravity.CENTER
                 maxLines = 1
                 ellipsize = TextUtils.TruncateAt.END

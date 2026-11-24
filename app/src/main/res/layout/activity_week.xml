@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="24dp"
-        android:paddingTop="26dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="30dp">
+        android:paddingStart="22dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="34dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,9 +26,9 @@
                 android:id="@+id/weekBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="8dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="6dp"
                 android:text="@string/back"
                 android:textColor="@color/dim"
                 android:textSize="20sp" />
@@ -38,8 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-monospace"
-                android:letterSpacing="0.24"
-                android:text="THIS WEEK"
+                android:letterSpacing="0.18"
+                android:text="This week"
                 android:textColor="@color/faint"
                 android:textSize="9sp" />
         </LinearLayout>
@@ -48,43 +48,42 @@
             android:id="@+id/weekRange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:letterSpacing="0.16"
+            android:layout_marginTop="12dp"
             android:textColor="@color/dim"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <com.lockin.ui.DotMatrixView
             android:id="@+id/weekTimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="18dp" />
 
         <TextView
             android:id="@+id/weekSessions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:letterSpacing="0.1"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/dim"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <com.lockin.ui.WeekBarsView
             android:id="@+id/weekBarsFull"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="24dp" />
+            android:layout_height="72dp"
+            android:layout_marginTop="26dp" />
 
         <LinearLayout
             android:id="@+id/weekDays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="26dp"
             android:background="@color/stroke" />
 
         <TextView
@@ -92,35 +91,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:letterSpacing="0.1"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/dim"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/weekDoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:letterSpacing="0.1"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/dim"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/weekHour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:letterSpacing="0.1"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/accent"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/weekFreezes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:letterSpacing="0.1"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="3dp"
             android:textColor="@color/faint"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 </ScrollView>

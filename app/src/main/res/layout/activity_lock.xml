@@ -7,16 +7,50 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:paddingStart="24dp"
-    android:paddingTop="22dp"
-    android:paddingEnd="24dp"
-    android:paddingBottom="20dp">
+    android:paddingStart="22dp"
+    android:paddingTop="28dp"
+    android:paddingEnd="22dp"
+    android:paddingBottom="22dp">
+
+    <!-- status line: the only place time-of-day appears -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dndLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-monospace"
+            android:letterSpacing="0.04"
+            android:textColor="@color/faint"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/metaLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-monospace"
+            android:letterSpacing="0.08"
+            android:textColor="@color/dim"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/stroke" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- the instrument: one dot-matrix clock, edge to edge -->
     <LinearLayout
         android:id="@+id/lockContent"
         android:layout_width="match_parent"
@@ -33,39 +67,20 @@
             android:id="@+id/goalGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="28dp"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/goalLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center"
-            android:letterSpacing="0.14"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-monospace"
+            android:gravity="start"
+            android:letterSpacing="0.08"
             android:textColor="@color/faint"
             android:textSize="9sp"
             android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/dndLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:gravity="center"
-            android:letterSpacing="0.06"
-            android:textColor="@color/dim"
-            android:textSize="11sp" />
-
-        <TextView
-            android:id="@+id/metaLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:letterSpacing="0.22"
-            android:textColor="@color/faint"
-            android:textSize="9sp" />
     </LinearLayout>
 
     <Space
@@ -79,13 +94,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/stroke" />
+
         <LinearLayout
             android:id="@+id/nowPlaying"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
             android:visibility="gone">
 
             <LinearLayout
@@ -95,19 +116,9 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:letterSpacing="0.28"
-                    android:text="NOW PLAYING"
-                    android:textColor="@color/faint"
-                    android:textSize="8sp" />
-
-                <TextView
                     android:id="@+id/npTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textColor="@color/text"
@@ -117,138 +128,60 @@
                     android:id="@+id/npArtist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="3dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:textColor="@color/dim"
+                    android:textColor="@color/faint"
                     android:textSize="10sp" />
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/npNext"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:contentDescription="Next song"
                 android:padding="10dp"
                 android:src="@drawable/ic_next" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/doomHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:textColor="@color/faint"
-            android:textSize="10sp" />
-
-        <TextView
             android:id="@+id/doomBtn"
             android:layout_width="match_parent"
             android:layout_height="54dp"
+            android:layout_marginTop="6dp"
             android:background="@drawable/bg_btn_red_outline"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:letterSpacing="0.16"
+            android:letterSpacing="0.14"
             android:text="@string/doomscroll"
             android:textColor="@color/accent"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/doomHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:textColor="@color/faint"
+            android:textSize="10sp" />
 
         <LinearLayout
             android:id="@+id/appsRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="18dp"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/appSpotify"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Spotify"
-                    android:src="@drawable/ic_spotify" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:letterSpacing="0.08"
-                    android:text="Spotify"
-                    android:textColor="@color/faint"
-                    android:textSize="9sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/appWhatsapp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="WhatsApp"
-                    android:src="@drawable/ic_whatsapp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:letterSpacing="0.08"
-                    android:text="WhatsApp"
-                    android:textColor="@color/faint"
-                    android:textSize="9sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/appPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Phone"
-                    android:src="@drawable/ic_phone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:letterSpacing="0.08"
-                    android:text="Phone"
-                    android:textColor="@color/faint"
-                    android:textSize="9sp" />
-            </LinearLayout>
-        </LinearLayout>
+            android:orientation="horizontal" />
 
         <TextView
             android:id="@+id/panelBtn"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/bg_btn_outline"
             android:fontFamily="sans-serif-monospace"
             android:gravity="center"
-            android:letterSpacing="0.16"
+            android:letterSpacing="0.12"
             android:text="QUICK PANEL  ·  1 MIN"
             android:textColor="@color/dim"
             android:textSize="9sp" />
@@ -262,17 +195,17 @@
             <com.lockin.ui.HoldButton
                 android:id="@+id/pauseBtn"
                 android:layout_width="0dp"
-                android:layout_height="54dp"
+                android:layout_height="56dp"
                 android:layout_weight="1" />
 
             <Space
-                android:layout_width="12dp"
+                android:layout_width="10dp"
                 android:layout_height="1dp" />
 
             <com.lockin.ui.HoldButton
                 android:id="@+id/endBtn"
                 android:layout_width="0dp"
-                android:layout_height="54dp"
+                android:layout_height="56dp"
                 android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>

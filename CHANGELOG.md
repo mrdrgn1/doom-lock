@@ -8,6 +8,18 @@ shipped. Builds 1.0–1.8 are recorded as commits carrying their shipped APKs, b
 for those builds was never kept anywhere but inside the APKs. From 1.9 on, each build is a
 normal commit plus a tag.
 
+## 1.11
+
+- **Rebuilt interface.** Rounded cards are gone; the screens are now built out of hairline rules,
+one column of aligned type and a single red square as the app's mark. Red is spent on one thing
+per screen: the live number or the one action.
+- **One dot-matrix instrument per screen.** The clock is edge to edge and framed by rules, and the
+session goal became a slim two-row dot strip under it instead of a second big dot field.
+- Type is calmer: sentence-case rows with a short description under each, monospace only for
+numbers and small markers, and a bigger gap between sections.
+- Start, focus, pause, session summary, weekly review, allowed apps and the home screen widget all
+use the same type scale, spacing and rules. Nothing was added, removed or moved.
+
 ## 1.10
 
 - **The app is called Lock In on the phone again.** The 1.9 rename is undone everywhere the
