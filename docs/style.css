@@ -23,6 +23,7 @@ h1 em{font-style:normal;color:var(--red)}
 .btn.p{background:var(--red);color:var(--onred)}
 .btn.g{border-color:var(--rule2)}
 .btn:hover{filter:brightness(1.1)}
+.beta-note{margin-top:18px;max-width:30em;color:var(--whisper);font-size:13px;line-height:1.65}
 .sheet{padding:56px 0;border-bottom:1px solid var(--rule)}
 .panel{border:1px solid var(--rule);background:var(--plate);padding:34px 26px;margin-top:20px}
 .clock{max-width:520px;margin:0 auto}
