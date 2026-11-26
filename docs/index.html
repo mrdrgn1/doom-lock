@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lock In | Your phone, on lockdown</title>
+<meta name="description" content="A focus app for study sessions. It pins itself to the screen, silences everything else and turns the display into a dot-matrix timer. Coming to Android.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://mrdrgn1.github.io/doom-lock/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lock In">
+<meta property="og:title" content="Lock In | Your phone, on lockdown">
+<meta property="og:description" content="A focus app for study sessions. Coming to Android.">
+<meta property="og:url" content="https://mrdrgn1.github.io/doom-lock/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23D71921'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bar">
+  <a class="brand" href="./"><i></i><span>LOCK IN</span></a>
+  <nav>
+    <a class="hide" href="#deal">The deal</a>
+    <a class="hide" href="#does">What it does</a>
+    <a class="hide" href="#release">Release</a>
+    <a class="pill" href="https://instagram.com/haylx.store">Instagram</a>
+  </nav>
+</div>
+
+<main class="page">
+
+  <section class="hero">
+    <p class="label">A focus app for study sessions</p>
+    <h1>Your phone,<br>on <em>lockdown</em><br>for the length<br>of a session.</h1>
+    <p class="lead">Lock In pins itself to the screen, silences everything and turns the display into a dot-matrix timer. Ten minutes of doomscroll to start, one more for every six you stay locked in, and every session lands in a calendar you can edit afterwards.</p>
+    <p class="acts">
+      <a class="btn p" href="https://instagram.com/haylx.store">FOLLOW FOR THE DROP</a>
+      <a class="btn g" href="https://github.com/mrdrgn1/doom-lock">SOURCE ON GITHUB</a>
+    </p>
+  </section>
+
+  <section class="sheet">
+    <p class="label">The screen is the timer</p>
+    <div class="panel">
+      <canvas id="clock" class="clock" role="img" aria-label="Dot-matrix timer reading 01:42:15"></canvas>
+      <div class="crow"><span>GOAL 2H</span><span>48M TO GO</span></div>
+    </div>
+  </section>
+
+  <section class="sw" id="deal">
+    <p class="label">The deal</p>
+    <div class="rows">
+      <div class="r"><b>10</b><p><strong>minutes of doomscroll to start the session.</strong> Any app, whatever you were going to open anyway.</p></div>
+      <div class="r"><b>+1</b><p><strong>minute for every six you stay locked in.</strong> Sit for an hour and you have banked ten more.</p></div>
+      <div class="r"><b>0</b><p><strong>cap.</strong> A long stretch saves a long break, and a break only ever costs the minutes you actually use.</p></div>
+    </div>
+  </section>
+
+  <section class="sw" id="does">
+    <p class="label">What it does</p>
+    <div class="spec">
+      <div class="s"><span>Pins itself to the screen</span><em>hold END for three seconds to leave</em></div>
+      <div class="s"><span>Silences the phone</span><em>do not disturb, alarms still ring</em></div>
+      <div class="s"><span>Dim dot-matrix timer</span><em>brightness lifts when you tap</em></div>
+      <div class="s"><span>Three allowed apps</span><em>music, messages, phone &#8212; free of charge</em></div>
+      <div class="s"><span>History you can edit</span><em>calendar, notes, add or delete a session</em></div>
+      <div class="s"><span>Widget and quick tile</span><em>start a session from the home screen</em></div>
+    </div>
+  </section>
+
+  <section class="sw" id="release">
+    <p class="label">Release</p>
+    <div class="spec">
+      <div class="s"><span>Platform</span><em>Android 8.0 and up</em></div>
+      <div class="s"><span>Size</span><em>one APK, no account</em></div>
+      <div class="s"><span>Data</span><em>stays on your phone</em></div>
+      <div class="s"><span>Price</span><em>free</em></div>
+      <div class="s"><span>Status</span><em>in beta, not on Google Play yet</em></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; <span id="yr">2026</span> Lock In</span>
+    <a href="https://instagram.com/haylx.store">@haylx.store</a>
+    <a href="https://github.com/mrdrgn1/doom-lock">Repository</a>
+    <span class="sp">Android &#183; one APK</span>
+  </footer>
+
+</main>
+
+<script src="clock.js"></script>
+</body>
+</html>
